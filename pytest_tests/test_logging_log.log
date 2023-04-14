@@ -1,0 +1,5 @@
+2023-04-03 12:17:33,532 : DEBUG : test_logging : Debug Statement.
+2023-04-03 12:17:33,532 : INFO : test_logging : Info Statement
+2023-04-03 12:17:33,532 : WARNING : test_logging : Warning Statement
+2023-04-03 12:17:33,532 : ERROR : test_logging : Error Statement
+2023-04-03 12:17:33,532 : CRITICAL : test_logging : Critical statement

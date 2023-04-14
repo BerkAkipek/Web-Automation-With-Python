@@ -1,0 +1,25 @@
+
+a = {1: "Hello world, "second": "arg"}
+
+# Dictionary
+
+## Tuples are immutable
+a = (1, 2, 3)
+
+# Tuple 
+
+a = [1, 2, 3, 4]
+
+# List
+
+a = 'String'
+
+# String Datatype
+
+3. Complex | a = 1+3j
+2. Float
+1. Int
+
+# Numeric Types
+
+# Python Datatypes
