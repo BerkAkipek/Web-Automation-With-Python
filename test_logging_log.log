@@ -3,3 +3,6 @@
 2023-04-03 12:16:48,441 : WARNING : test_logging : Warning Statement
 2023-04-03 12:16:48,442 : ERROR : test_logging : Error Statement
 2023-04-03 12:16:48,442 : CRITICAL : test_logging : Critical statement
+2023-04-16 14:00:19,532 : INFO : BaseClass : ['Berk', 'Akipek', 'example@example.com']
+2023-04-16 14:00:19,532 : INFO : BaseClass : ['Berk', 'Akipek', 'example@example.com']
+2023-04-16 14:10:16,490 : INFO : test_edit_profile : ['Berk', 'Akipek', 'example@example.com']
