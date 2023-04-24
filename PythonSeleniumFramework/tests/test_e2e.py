@@ -1,15 +1,10 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from time import sleep
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
-import pytest
-#from ..utilities.BaseClass import BaseClass
+from utilities.BaseClass import BaseClass
 
 
-@pytest.mark.usefixtures("setup")
-class TestOne:
+class TestOne(BaseClass):
 
     def test_e2e(self):
 
