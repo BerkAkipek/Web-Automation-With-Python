@@ -2,35 +2,32 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from utilities.BaseClass import BaseClass
+from pageObjects.HomePage import HomePage
+from pageObjects.CheckoutPage import CheckoutPage
+from pageObjects.ConfirmPage import ConfirmPage
 
 
 class TestOne(BaseClass):
 
     def test_e2e(self):
+        home_page = HomePage(self.driver)
+        checkout_page = home_page.shop_items()
 
-        self.driver.find_element(By.LINK_TEXT, "Shop").click() # //a[contains(@href,'shop')]
+        products = checkout_page.get_product_cards()
+        for product in products:
+            if "Blackberry" in product.text:
+                checkout_page.found_purchase_button(product).click()
 
-        products = self.driver.find_elements(By.XPATH, "//div[@class='card h-100']")
+        confirm_page = checkout_page.find_checkout_button()
+        confirm_page.find_confirm_button().click()
 
-        for elem in products:
-            if "Blackberry" in elem.text:
-                elem.find_element(By.XPATH, "div/button").click()
+        confirm_page.find_region_input().clear()
+        confirm_page.find_region_input().send_keys("india")
 
-        self.driver.find_element(By.XPATH, "//a[@class='nav-link btn btn-primary']").click()
+        self.verify_link_presence(text="India")
 
-        self.driver.find_element(By.XPATH, "//button[@class='btn btn-success']").click()
+        confirm_page.choose_region().click()
+        confirm_page.find_checkbox().click()
+        confirm_page.find_purchase_button().click()
 
-        self.driver.find_element(By.XPATH, "//input[@id='country']").clear()
-        self.driver.find_element(By.XPATH, "//input[@id='country']").send_keys("india")
-
-        wait = WebDriverWait(self.driver, 10)
-        wait.until(expected_conditions.presence_of_element_located((By.LINK_TEXT, "India")))
-
-        self.driver.find_element(By.LINK_TEXT, "India").click()
-
-        self.driver.find_element(By.XPATH, "//label[@for='checkbox2']").click()
-
-        self.driver.find_element(By.XPATH, "//input[@value='Purchase']").click()
-
-        assert "Success" in self.driver.find_element(By.XPATH, "//div[@class='alert alert-success alert-dismissible']").text
-
+        assert "Success" in confirm_page.find_success_message().text
